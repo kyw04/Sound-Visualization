@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    const int max = 512;
+    const int max = 256;
     public GameObject sampleCubePrefab;
     public AudioPeer audioPeer;
     private GameObject[] sampleCube = new GameObject[max];
@@ -15,7 +15,7 @@ public class test : MonoBehaviour
         for (int i = 0; i < max; i++)
         {
             GameObject instantiateSampleCube = Instantiate(sampleCubePrefab);
-            instantiateSampleCube.transform.position = new Vector3(i, 0, 0);
+            instantiateSampleCube.transform.position = new Vector3(i, 0, 0) + transform.position;
             instantiateSampleCube.transform.parent = this.transform;
             instantiateSampleCube.name = "SampleCube" + i;
             //this.transform.eulerAngles = new Vector3(0, -360.0f / max * i, 0);
@@ -26,7 +26,7 @@ public class test : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < 512; i++)
+        for (int i = 0; i < max; i++)
         {
             if (sampleCube != null)
             {

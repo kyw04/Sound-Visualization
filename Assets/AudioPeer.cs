@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioPeer : MonoBehaviour
 {
-    const int max = 512;
+    const int max = 256;
+    public FFTWindow fFTWindow;
     private AudioSource audioSource;
     public float[] samples = new float[max];
 
@@ -22,6 +23,6 @@ public class AudioPeer : MonoBehaviour
 
     void GetSpectumAudioSource()
     {
-        audioSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
+        audioSource.GetSpectrumData(samples, 0, fFTWindow);
     }
 }
